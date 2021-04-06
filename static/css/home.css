@@ -1,0 +1,57 @@
+.home-template .container {
+    padding: 40px;
+  }
+  
+  .home-template a {
+    text-decoration: none;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+    color: #3979a4;
+  }
+  
+  .home-template h1 {
+    margin-bottom: 30px;
+  }
+  
+  .home-template i {
+    font-size: .9em;
+  }
+
+/*Centering our h1*/
+h1 {
+    text-align: center;
+  }
+  /*Attaching the flex-box to our listed items, giving the links space within that box, and centering the text*/
+  ul {
+    display: flex;
+    list-style-type: none;
+    margin: 50px 100px;
+    font: 17px helvetica;
+    text-align: center;
+  }
+  /*Giving our li a background and height-space*/
+  li {
+    flex: 1;
+    height: 66px;
+    background: #1a1a1a;
+  }
+  /*Making the li's inside of our navbar interactive with color change and padding/margin*/
+  li:hover {
+    flex:1.1;
+    transition:all .2s ease;
+    background: #333333;
+  }
+  /*Styling and sizing our link/letters while giving them a block-level, 'click' ability*/
+  .navigation a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    color: white;
+    padding: 23px;
+  }
+  /*Giving the middle, border-lines a color and size*/
+  .navigation li:not(:first-child){
+      border-left: 2px solid #ecf0f1;
+  } 

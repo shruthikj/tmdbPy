@@ -1,0 +1,81 @@
+body, html {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+h3.text-center{
+    text-transform: uppercase;
+}
+.content {
+    margin: 0 auto;
+    width: 400px;
+}
+
+table, td, th {
+    border: 1px solid #aaa;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    height: 30px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+#content {
+    width: 70%;
+}
+
+/*Centering our h1*/
+h1 {
+    text-align: center;
+  }
+  /*Attaching the flex-box to our listed items, giving the links space within that box, and centering the text*/
+  ul {
+    display: flex;
+    list-style-type: none;
+    margin: 50px 100px;
+    font: 17px helvetica;
+    text-align: center;
+  }
+  /*Giving our li a background and height-space*/
+  li {
+    flex: 1;
+    height: 66px;
+    background: #1a1a1a;
+  }
+  /*Making the li's inside of our navbar interactive with color change and padding/margin*/
+  li:hover {
+    flex:1.1;
+    transition:all .2s ease;
+    background: #333333;
+  }
+  /*Styling and sizing our link/letters while giving them a block-level, 'click' ability*/
+  .navigation a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    color: white;
+    padding: 23px;
+  }
+  /*Giving the middle, border-lines a color and size*/
+  .navigation li:not(:first-child){
+      border-left: 2px solid #ecf0f1;
+  }

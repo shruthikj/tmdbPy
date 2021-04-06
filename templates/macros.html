@@ -1,0 +1,59 @@
+{% macro displayMovieList(movie_list) %}
+    <div class="d-flex flex-row" style="margin-bottom: 15px;">
+        {% for movie in movie_list %}
+            <div class="p-2">
+            <a href="/movie/{{movie.id}}">
+                <img src="http://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }} poster" style="height: 13rem;" class="img-responsive">
+                <div class="text-center">
+                    <p>{{ movie.title }}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>    
+{% endmacro %}
+
+{% macro displayReviews(review_list) %}
+    {% for review in review_list %}
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
+            <h4>Author</h4>
+            <p>{{review.user.username}}</p>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+            <h2><a href="{{url_for('main.single_review', id = review.id)}}">
+                {{review.review_title}}
+            </a></h2>
+        </div>
+    </div>
+    {% endfor %}
+{% endmacro %}
+
+{% macro displayMovieDetails(movie) %}
+
+    <div class="container">
+    <!-- Poster background -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 posterPath">
+                <img src="http://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{movie.title}}" class="img-responsive">
+            </div>   
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 movie-details">
+                <div class="thumbnail" style="border: none">
+                    <h1>{{ movie.title }}</h1>   
+                    <p class="overview"> {{ movie.overview }}</p>
+                    <p class="ratings"> <b> {{ movie.vote_average }}</b> - <i>{{ movie.vote_count}} votes </i> </p>   
+                </div>
+                <h3>Reviews</h3>
+                <hr>
+                {% if reviews %}
+                    {{macro.displayReviews(reviews)}}
+                    <a class="btn btn-success text-center" href="/movie/review/new/{{movie.id}}"> Write a new review</a>      
+                {% else%}
+                    <h3 class="text-center">This movie has no reviews </h3>
+                    <a class="btn btn-success text-center" href="/movie/review/new/{{movie.id}}"> Write a new review</a>
+                {% endif %}
+            </div>
+        </div> 
+    </div>
+{% endmacro %}
+

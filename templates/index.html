@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block head %}
+<title>TMDB Movies</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/homepage.js') }}"></script>
+
+{% endblock %}
+
+<style>
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
+    h3.text-center{
+        text-transform: uppercase;
+    }
+</style>
+
+{% block body %}
+<div class="content">
+    <h2 style="text-align: center">TMDB Movie Database</h2>
+    <h4>Go ahead and search for a movie</h4>
+    <div class="form">
+        <form action="/" method="POST">
+            <input type="text" name="searchMovie" id="searchMovie">
+            <!-- <input type="submit" value="Add Task"> -->
+            <input type="submit" value="Search Movies">
+        </form>
+    </div>
+</div>
+<!-- Search movie -->
+{% if search_movie %}
+    <div class="container">
+        <h4> Search Results</h4>
+        <div>
+            {{ macro.displayMovieList(search_movie)}}
+        </div>
+    </div>
+
+    <div class="container">
+
+        <h4> Movies similar to {{ search_movie[0].title}}</h4>
+        <div>
+            {{ macro.displayMovieList(similar)}}
+        </div>
+    </div>
+
+    <div class="container">
+
+        <h4> Recommended for you: </h4>
+        <div>
+            {{ macro.displayMovieList(recommendations)}}
+        </div>
+    </div>
+{% endif %}
+
+<!-- Movie Deatils -->
+<div class="container" id="movieDetails">
+    {% if movie %}
+    <div>
+        {{ macro.displayMovieDetails(movie)}}
+    </div>
+    {% endif %}
+</div>
+
+
+<!-- Popular movie -->
+<!-- <input type="button" name="popularMovies" value="Popular Movies" onclick="showPopularMovies()"/> -->
+{% if popular %}
+<div class="container" id="popularMovies">
+    <h4> Popular Movies</h4>
+    <div>
+        {{ macro.displayMovieList(popular)}}
+    </div>
+</div>
+{% endif %}
+
+<!-- New Releases  -->
+{% if popular %}
+
+    <div class="container">
+        <hr>
+        <h4> New Releases this year</h4>
+        <div>
+            {{ macro.displayMovieList(new_releases)}}
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
